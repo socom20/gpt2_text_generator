@@ -6,11 +6,14 @@ The class generates text from a text-seed. It also implements method for languag
 
 It could be used with any language as input text, and the result text could be translated to any language supported by Google Translator.
 
+For more information of the model refer to: ["OpenIA GitHub page"](https://github.com/openai/gpt-2)
 
 ## Donwload the model:
 
 Execute:
 `python download_model.py`
+
+The model of 124M  of weights will downloaded from the OpenIA repository.
 
 ## Class usage:
 
@@ -32,7 +35,7 @@ gen_model = GenerativeModel(
     models_dir='./models',
     verbose=True)
 
-# Generation step (ex, from spanish to spanish)
+# Generation step (i.e., from spanish to spanish)
 generated_text_v = gen_model.gen_from_sample(
     raw_text='Mi querido hijo, no sabes la alegría que me dió leer tu carta',
     nsamples=1,
