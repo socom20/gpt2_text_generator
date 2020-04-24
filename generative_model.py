@@ -1,7 +1,8 @@
 import json
-import os
+import os, sys
 import numpy as np
 import tensorflow as tf
+import random
 
 import model, sample, encoder
 
@@ -11,8 +12,7 @@ class GenerativeModel():
     def __init__(
         self,
         model_name='124M',
-        seed=0,
-        batch_size=1,
+        seed=None,
         length=None,
         temperature=0.8,
         top_k=0,
@@ -22,7 +22,7 @@ class GenerativeModel():
 
         self.model_name  = model_name
         self.seed        = seed
-        self.batch_size  = batch_size
+        self.batch_size  = 1
         self.length      = length
         self.temperature = temperature
         self.top_k       = top_k
@@ -58,7 +58,8 @@ class GenerativeModel():
                 print(' - Setting: length to:', self.length)
             
         elif self.length > self.hparams.n_ctx:
-            raise ValueError("Can't get samples longer than window size: %s" % hparams.n_ctx)
+            self.length = self.hparams.n_ctx // 2
+            print("Can't get samples longer than window size: %s, using default value." % hparams.n_ctx, file=sys.stderr)
 
 
 
@@ -127,17 +128,17 @@ class GenerativeModel():
                                                      input_lang='en',
                                                      output_lang=output_lang)
 
-        if self.verbose:
-            print("=" * 80)
-            print(' Input text:', raw_text)
-            print("=" * 80)
-            print()
-
-            for i in range(len(generated_text_v)):
-                print("=" * 40 + " SAMPLE " + str(i-1) + " " + "=" * 40)
-                print(generated_text_v[i])
-
-            print("=" * 80)
+##        if self.verbose:
+##            print("=" * 80)
+##            print(' Input text:', raw_text)
+##            print("=" * 80)
+##            print()
+##
+##            for i in range(len(generated_text_v)):
+##                print("=" * 40 + " SAMPLE " + str(i-1) + " " + "=" * 40)
+##                print(generated_text_v[i])
+##
+##            print("=" * 80)
             
         return generated_text_v
 
@@ -145,3 +146,10 @@ class GenerativeModel():
 if __name__ == '__main__':
     gen_model = GenerativeModel(length=256)
     generated_text_v = gen_model.gen_from_sample(nsamples=3)
+
+
+    for i in range(len(generated_text_v)):
+        print("=" * 40 + " SAMPLE " + str(i-1) + " " + "=" * 40)
+        print(generated_text_v[i])
+
+    print("=" * 80)
