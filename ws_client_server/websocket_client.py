@@ -40,7 +40,7 @@ def start_new_ws(ws):
 class ws_client:
     def __init__(self,
                  host='localhost',
-                 port=8001,
+                 port=7005,
                  use_ssl=False,
                  on_message_function=None,
                  password=None):

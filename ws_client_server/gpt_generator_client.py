@@ -62,7 +62,7 @@ class GPTGeneatorClient():
     def __init__(self,
                  generation_dir='../gpt_generations',
                  host='localhost',
-                 port=8001,
+                 port=7005,
                  password='gpt_model'):
         
         self.generation_dir = generation_dir

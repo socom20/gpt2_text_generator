@@ -214,8 +214,8 @@ if __name__ == "__main__":
     # Parse arguments
     parser = OptionParser(usage="usage: %prog [options]", version="%prog 1.0")
     parser.add_option("--host", default='0.0.0.0', type='string', action="store", dest="host", help="hostname (localhost)")
-    parser.add_option("--port", default=8001, type='int', action="store", dest="port", help="port (80)")
-    parser.add_option("--password", default=None, type='str', action="store", dest="password", help="server password")
+    parser.add_option("--port", default=7005, type='int', action="store", dest="port", help="port (80)")
+    parser.add_option("--password", default='gpt_model', type='str', action="store", dest="password", help="server password")
     parser.add_option("--ssl", default=0, type='int', action="store", dest="ssl", help="ssl (1: on, 0: off (default))")
     parser.add_option("--cert", default='./cert.pem', type='string', action="store", dest="cert", help="cert (./cert.pem)")
     parser.add_option("--key", default='./key.pem', type='string', action="store", dest="key", help="key (./key.pem)")
@@ -226,7 +226,9 @@ if __name__ == "__main__":
     parser.add_option("--temperature", default=0.8, type='float', action="store", dest="temperature", help="Temperature for the generation.")
     parser.add_option("--models-dir", default='../models', type='string', action="store", dest="models_dir", help="Directory where the model is located.")
 
-    (options, args) = parser.parse_args(['--password', 'gpt_model'])
+
+##    (options, args) = parser.parse_args(['--password', 'gpt_model'])
+    (options, args) = parser.parse_args()
 
     print('Starting GPT Generator ...')
         # Starting Predictor as a object model
