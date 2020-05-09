@@ -222,7 +222,7 @@ if __name__ == "__main__":
     
     parser.add_option("--model-name", default='124M', type='string', action="store", dest="model_name", help="The name of the GPT model.")
     parser.add_option("--seed", default=None, type='int', action="store", dest="seed", help="A seed for the model.")
-    parser.add_option("--length", default=None, type='int', action="store", dest="length", help="Length of the generated text.")
+    parser.add_option("--length", default=150, type='int', action="store", dest="length", help="Length of the generated text.")
     parser.add_option("--temperature", default=0.8, type='float', action="store", dest="temperature", help="Temperature for the generation.")
     parser.add_option("--models-dir", default='../models', type='string', action="store", dest="models_dir", help="Directory where the model is located.")
 
@@ -232,6 +232,7 @@ if __name__ == "__main__":
 
     print('Starting GPT Generator ...')
         # Starting Predictor as a object model
+        
     model = GenerativeModel(
             model_name=options.model_name,
             seed=options.seed,

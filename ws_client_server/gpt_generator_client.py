@@ -138,16 +138,19 @@ class GPTGeneatorClient():
             
 if __name__ == '__main__':
     
-    generator_client = GPTGeneatorClient()
+    generator_client = GPTGeneatorClient(
+        generation_dir='../../gpt_generations',
+        host='localhost',
+        port=7005)
     
-    generator_client.generate(text_seed='Querida hijo como estas este día',
+    generator_client.generate(text_seed='Querido hijo, te escribo para decirte que',
                               gender_folder='male',
-                              n_samples=5,
+                              n_samples=2,
                               )
 
-    generator_client.generate(text_seed='Querida hija como estas este día',
+    generator_client.generate(text_seed='Querida hija, te escribo para decirte que',
                               gender_folder='female',
-                              n_samples=5,
+                              n_samples=2,
                               )
 
 

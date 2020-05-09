@@ -144,7 +144,7 @@ class GenerativeModel():
 
 
 if __name__ == '__main__':
-    gen_model = GenerativeModel(length=256)
+    gen_model = GenerativeModel(length=150)
     generated_text_v = gen_model.gen_from_sample(nsamples=3)
 
 
